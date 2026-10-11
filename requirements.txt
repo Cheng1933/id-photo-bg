@@ -1,0 +1,7 @@
+# 运行依赖（开发 / 打包用）
+numpy==1.26.4
+opencv-python>=4.8.1.78
+onnxruntime>=1.15.0
+pillow
+mtcnn-runtime
+customtkinter>=6.0.0
