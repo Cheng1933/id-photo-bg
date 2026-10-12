@@ -24,6 +24,28 @@ the bugs one by one. It is not beautifully architected. But the pitfalls section
 below is real, hard-won, and probably the most useful part of this repository if
 you are building something similar.
 
+## Known issue: some locations cause "Permission denied"
+
+**Measured, not guessed.** If you unzip the program into one of the special
+user folders -- **Downloads**, **Documents**, **Pictures**, **Music**,
+**Videos** -- while the photos you want to process sit on the **Desktop**,
+Windows refuses the write. You get
+
+    PermissionError: [Errno 13] Permission denied
+    PermissionError: [WinError 5] 拒绝访问
+
+and the file list shows a **✗** next to each photo.
+
+**Workaround:** unzip the program into a plain folder such as
+`D:\id-photo-bg\`, and keep the output folder somewhere ordinary as well.
+Do not unzip it into the folders listed above.
+
+To be clear about what *does* work: **the Desktop itself is fine.** The problem
+only appears for that specific combination (program inside one of those folders
++ photos on the Desktop). This is a Windows write restriction, not a bug in the
+program -- the exact same build writes successfully when the program lives
+elsewhere.
+
 ## What it does
 
 * **Drag and drop** a photo, or an entire folder, onto the window.
